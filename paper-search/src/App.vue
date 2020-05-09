@@ -18,7 +18,7 @@
           </el-input>
       </div>
       <div class="button">
-        <el-button icon="el-icon-search" type="primary" size="large" round></el-button>
+        <el-button icon="el-icon-search" type="primary" size="large" @click="send_search_msg" round></el-button>
       </div>
     </div>
     
@@ -37,6 +37,19 @@ export default {
     return{
       input: '',
       select: '搜索模式'
+    }
+  },
+  methods:{
+    send_search_msg: function(){
+      var msg = this.input
+      if (msg == '' || msg == ' ') {
+        return
+      }
+      this.$router.push({
+        path: './search',
+        query: {msg: msg}
+      })
+      // this.$router.push('/search')
     }
   }
   
